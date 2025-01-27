@@ -21,14 +21,14 @@ def load_sprites() -> Dict[str, pygame.Surface]:
         and the values are pygame.Surface objects representing the sprites.
     """
 
-    sprite_sheet = pygame.image.load("./art/sprite_sheet.png").convert_alpha()
+    sprite_sheet = pygame.image.load("./assets/sprite_sheet.png").convert_alpha()
     # returns a pygame surface with transparency
 
     # Dictionary to hold sprites by name
     sprites = {}
 
     # Load the JSON metadata
-    with open("./art/sprite_sheet.json", "r") as f:
+    with open("./assets/sprite_sheet.json", "r") as f:
         metadata = json.load(f)
 
     def get_sprite_from_metadata(sprite_sheet: pygame.Surface, frame_data: Dict[str, int]) -> pygame.Surface:

@@ -1,9 +1,9 @@
 import pygame
 from typing import Tuple
-from src.sprites import load_sprites
+from sprites import load_sprites
 from game_colors import Colors
 
-from src.player_controller import PlayerController
+from player_controller import PlayerController
 from fishing_hook import FishingHook
 from fish_generator import FishGenerator
 
