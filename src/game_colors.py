@@ -11,3 +11,4 @@ def hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
 
 class Colors(Enum):
     HIGHLIGHT_TAN = hex_to_rgb("#f6d6bd")
+    MIDTONE_RED = hex_to_rgb("#816271")

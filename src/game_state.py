@@ -82,5 +82,6 @@ class GameState:
         # render all the sprites
         self.all_sprites_group.draw(self.screen)
 
+        self.hook.draw(self.screen, self.player.pos)
         # draw score
         self.draw_text(f"Fish Caught: {self.fish_caught_count}", self.FISH_COUNTER_POS)

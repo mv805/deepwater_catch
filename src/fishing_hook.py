@@ -1,6 +1,7 @@
 from enum import Enum
 import pygame
 from typing import TYPE_CHECKING
+from game_colors import Colors
 
 if TYPE_CHECKING:
     from game_state import GameState
@@ -90,3 +91,9 @@ class FishingHook(pygame.sprite.Sprite):
         self.pos.x = player_pos.x
 
         self.rect.midtop = self.pos  # need to update rect pos
+
+    def draw(self, screen, player_pos):
+        # Draw the fishing line
+        pygame.draw.line(screen, Colors.MIDTONE_RED.value, player_pos, self.rect.midtop, 1)
+        # Draw the hook sprite
+        screen.blit(self.image, self.rect)
