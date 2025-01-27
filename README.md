@@ -7,10 +7,12 @@ Built with [Pygame-ce](https://github.com/pygame-community/pygame-ce)
 
 ## Screenshot
 ![Game Screenshot](/info/screenshot.PNG)
+
 ## How to Play
 * **Move Left and Right**: Use the arrow keys (← and →) to move the boat left and right.
 * **Drop the Fishing Hook**: Press the spacebar (SPACE) to drop the fishing hook into the water.
 * **Catch Fish**: Position the hook to catch fish as they swim by. Reel the hook back up by pressing the spacebar again.
+
 ## Setup Instructions
 
 ### 1. Clone the Repository
