@@ -4,7 +4,10 @@
 Deepwater Catch is a game I am developing to enhance my Python programming and game development skills. I have created all the assets and components of the game myself.
 
 Built with [Pygame-ce](https://github.com/pygame-community/pygame-ce)
-
+## How to Play
+* **Move Left and Right**: Use the arrow keys (← and →) to move the boat left and right.
+* **Drop the Fishing Hook**: Press the spacebar (SPACE) to drop the fishing hook into the water.
+* **Catch Fish**: Position the hook to catch fish as they swim by. Reel the hook back up by pressing the spacebar again.
 ## Setup Instructions
 
 ### 1. Clone the Repository
@@ -29,33 +32,13 @@ python main.py
 Here are some goals to polish up the project
 
 - [x] Version 0.1.0: Initial release with basic gameplay mechanics
-- [ ] Version 0.2.0: Improve graphics
+- [x] Version 0.2.0: Improved graphics
 - [ ] Version 0.2.1: Build initial Test Suite
 - [ ] Version 0.2.2: Clean up and Refactor Code for clarity
-- [ ] Version 0.3.0: Add sound effects and music?
-- [ ] Version 0.4.0: Add animations
+- [ ] Version 0.3.0: Add animations
 - [ ] Version 0.5.0: Add splash screen and end of game window
-- [ ] Version 1.0.0: Official release with full features and bug fixes
+- [ ] Version 1.0.0: Official release
 
-## License
-MIT License
-
-Copyright (c) 2025 Matt V.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## License  
+- **Code**: Licensed under the [MIT License](LICENSE).  
+- **Assets**: Dedicated to the public domain via [CC0 1.0 Universal](LICENSE-ASSETS). You may use, modify, distribute, or sell these assets for any purpose without permission or attribution.  

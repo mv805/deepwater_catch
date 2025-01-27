@@ -26,7 +26,7 @@ class FishingHook(pygame.sprite.Sprite):
         self.rect: pygame.Rect = self.image.get_rect(midtop=(self.pos.x, self.pos.y))
 
         self.TOP_STOP_MOVEMENT_OFFSET = self.pos.y
-        self.BOTTOM_STOP_MOVEMENT_OFFSET = 50
+        self.BOTTOM_STOP_MOVEMENT_OFFSET = 35
 
         self._spacebar_pressed = False
         self.caught_fish = None

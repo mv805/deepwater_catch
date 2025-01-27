@@ -1,0 +1,2 @@
+The assets in this repository (including art, music, sounds, models, etc.) are dedicated to the public domain under the CC0 1.0 Universal license.  
+You may use, modify, distribute, or sell them for any purpose, without attribution or restrictions.  

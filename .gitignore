@@ -1,3 +1,6 @@
 __pycache__
 venv
-example_structure.py
+
+assets/sprite_sheet_test.json
+assets/sprite_sheet_test.png
+assets/test.png

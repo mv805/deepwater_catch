@@ -1,8 +1,8 @@
 from typing import Dict
 import pygame
 import json
-import re
 
+# workflow->
 # generate a surface
 # load an image onto the surface
 # get coordicates and for collision use Rect
@@ -22,7 +22,7 @@ def load_sprites() -> Dict[str, pygame.Surface]:
     """
 
     sprite_sheet = pygame.image.load("./art/sprite_sheet.png").convert_alpha()
-    # returns a pygame surface with transperancy
+    # returns a pygame surface with transparency
 
     # Dictionary to hold sprites by name
     sprites = {}
@@ -52,10 +52,7 @@ def load_sprites() -> Dict[str, pygame.Surface]:
         frame_data = data["frame"]
         # pulls dict from the data like "frame": { "x": 0, "y": 0, "w": 700, "h": 130 },
 
-        frame_data = data["frame"]
-        # Extract the object name and convert to lowercase for easier reference
-        sprite_object_name = re.sub(r".* \((.*)\)\.aseprite", r"\1", sprite_name).lower()
-        sprites[sprite_object_name] = get_sprite_from_metadata(sprite_sheet, frame_data)
+        sprites[sprite_name] = get_sprite_from_metadata(sprite_sheet, frame_data)
 
     return sprites
 
@@ -87,7 +84,7 @@ if __name__ == "__main__":
 
     print(sprites)
 
-    test_sprite_boat = TestSprite(sprites["boat"])
+    test_sprite_boat = TestSprite(sprites["Boat"])
     test_sprite_boat.rect.center = (350, 200)  # Center the sprite on the screen
     all_sprites = pygame.sprite.Group(test_sprite_boat)
 

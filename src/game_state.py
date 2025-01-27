@@ -1,9 +1,9 @@
 import pygame
 from typing import Tuple
-from sprites import load_sprites
+from src.sprites import load_sprites
 from game_colors import Colors
 
-from player_controller import PlayerController
+from src.player_controller import PlayerController
 from fishing_hook import FishingHook
 from fish_generator import FishGenerator
 
@@ -24,11 +24,10 @@ class GameState:
         }
         # load sprites
         self.game_sprites = load_sprites()
-        self.player_sprite = self.game_sprites["boat"]
-        self.hook_sprite = self.game_sprites["hook"]
-        self.fish_sprite = self.game_sprites["fish"]
-        self.bg_sky_sprite = self.game_sprites["sky"]
-        self.bg_sea_floor_sprite = self.game_sprites["background"]
+        self.player_sprite = self.game_sprites["Boat"]
+        self.hook_sprite = self.game_sprites["Hook"]
+        self.fish_sprite = self.game_sprites["Fish"]
+        self.background = self.game_sprites["Background"]
         # create objects
         self.player = PlayerController(player_pos, self.player_sprite, self.screen.get_width())
         self.hook = FishingHook(player_pos, self.hook_sprite, game_screen.get_height())
@@ -52,7 +51,7 @@ class GameState:
             fish_on_screen=self.fish_sprites_group,
             min_fish_speed=self.fish_spawner_parameters["MIN_FISH_SPEED"],
             max_fish_speed=self.fish_spawner_parameters["MAX_FISH_SPEED"],
-            fish_sprite=self.game_sprites["fish"],
+            fish_sprite=self.game_sprites["Fish"],
         )
 
         pygame.font.init()
@@ -72,27 +71,13 @@ class GameState:
     def fish_caught(self):
         self.fish_caught_count += 1
 
-    def draw_background(self):
-        """
-        Draws the background on the game screen.
-
-        This method fills the screen with a dark green color, then draws the sea floor
-        image at the bottom of the screen and the sky image at the top of the screen.
-        """
-        # Draw the background every loop
-        self.screen.fill(Colors.DARK_GREEN.value)
-        background_seafloor_rect = self.bg_sea_floor_sprite.get_rect()
-        background_seafloor_rect.bottomleft = (0, self.screen.get_height())
-        self.screen.blit(self.bg_sea_floor_sprite, background_seafloor_rect.topleft)
-        self.screen.blit(self.bg_sky_sprite, (0, 0))
-
     def draw_text(self, text, position):
-        text_surface = self.font.render(text, True, Colors.DARK_GREEN.value)
+        text_surface = self.font.render(text, True, Colors.HIGHLIGHT_TAN.value)
         self.screen.blit(text_surface, position)
 
     def draw(self):
 
-        self.draw_background()
+        self.screen.blit(self.background, self.background.get_rect().topleft)
 
         # render all the sprites
         self.all_sprites_group.draw(self.screen)
