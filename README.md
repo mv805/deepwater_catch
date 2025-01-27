@@ -6,7 +6,7 @@ Deepwater Catch is a game I am developing to enhance my Python programming and g
 Built with [Pygame-ce](https://github.com/pygame-community/pygame-ce)
 
 ## Screenshot
-![Game Screenshot](info/screenshot.png)
+![Game Screenshot](/info/screenshot.PNG)
 ## How to Play
 * **Move Left and Right**: Use the arrow keys (← and →) to move the boat left and right.
 * **Drop the Fishing Hook**: Press the spacebar (SPACE) to drop the fishing hook into the water.
