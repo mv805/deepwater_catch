@@ -7,8 +7,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../s
 import unittest  # noqa: E402
 from unittest.mock import Mock  # noqa: E402
 import pygame  # noqa: E402
-from fishing_hook import FishingHook  # noqa: E402
-from fish import Fish  # noqa: E402
+from src.fishing_hook import FishingHook  # noqa: E402
+from src.fish import Fish  # noqa: E402
 
 
 # Tests check the following:
