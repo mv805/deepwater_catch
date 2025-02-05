@@ -2,7 +2,6 @@ import pygame
 from typing import Tuple
 from sprites import load_sprites
 from game_colors import Colors
-
 from player_controller import PlayerController
 from fishing_hook import FishingHook
 from fish_generator import FishGenerator
@@ -66,7 +65,7 @@ class GameState:
             self.fish_sprites_group.add(fish_to_spawn)
             self.all_sprites_group.add(fish_to_spawn)
 
-        self.fish_sprites_group.update(dt, self.hook.pos, self.hook)
+        self.fish_sprites_group.update(dt, self.hook, self.screen)
 
     def fish_caught(self):
         self.fish_caught_count += 1
