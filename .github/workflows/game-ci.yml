@@ -5,7 +5,7 @@ name: Deepwater Catch CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "state-machine-changes" ]
   pull_request:
     branches: [ "main" ]
 
