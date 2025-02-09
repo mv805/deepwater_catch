@@ -1,5 +1,5 @@
 import pygame
-from game_state import GameState
+from app.game_state import GameState
 
 
 def main():

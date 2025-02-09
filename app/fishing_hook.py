@@ -1,10 +1,10 @@
 from enum import Enum
 import pygame
 from typing import TYPE_CHECKING
-from game_colors import Colors
+from app.game_colors import Colors
 
 if TYPE_CHECKING:
-    from game_state import GameState
+    from app.game_state import GameState
 
 
 class HookState(Enum):

@@ -1,10 +1,10 @@
 import pygame
 from typing import Literal, Tuple
 from typing import TYPE_CHECKING
-from state_machine import State, StateMachine
+from app.state_machine import State, StateMachine
 
 if TYPE_CHECKING:
-    from fishing_hook import FishingHook
+    from app.fishing_hook import FishingHook
 
 
 class CaughtState(State):

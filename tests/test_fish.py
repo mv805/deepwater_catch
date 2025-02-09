@@ -1,14 +1,8 @@
-import sys
-import os
-
-# Add src directory to path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
-
-import unittest  # noqa: E402
-from unittest.mock import Mock  # noqa: E402
-import pygame  # noqa: E402
-from src.fishing_hook import FishingHook  # noqa: E402
-from src.fish import Fish  # noqa: E402
+import unittest
+from unittest.mock import Mock
+import pygame
+from app.fishing_hook import FishingHook
+from app.fish import Fish
 
 
 # Tests check the following:

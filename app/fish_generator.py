@@ -1,5 +1,5 @@
 import pygame
-from fish import Fish
+from app.fish import Fish
 import random
 from typing import Literal
 

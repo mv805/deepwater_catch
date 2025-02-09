@@ -1,10 +1,10 @@
 import pygame
 from typing import Tuple
 from sprites import load_sprites
-from game_colors import Colors
-from player_controller import PlayerController
-from fishing_hook import FishingHook
-from fish_generator import FishGenerator
+from app.game_colors import Colors
+from app.player_controller import PlayerController
+from app.fishing_hook import FishingHook
+from app.fish_generator import FishGenerator
 
 
 class GameState:
