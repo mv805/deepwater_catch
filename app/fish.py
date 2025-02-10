@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 from app.state_machine import State, StateMachine
 
 if TYPE_CHECKING:
-    # need this to forward reference the typing
+    # need this to forward reference the typing.
     from app.fishing_hook import FishingHook
 
 
