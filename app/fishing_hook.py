@@ -1,10 +1,10 @@
 from enum import Enum
 import pygame
 from typing import TYPE_CHECKING
-from game_colors import Colors
+from app.game_colors import Colors
 
 if TYPE_CHECKING:
-    from game_state import GameState
+    from app.game_state import GameState
 
 
 class HookState(Enum):
@@ -22,7 +22,7 @@ class FishingHook(pygame.sprite.Sprite):
         self.screen_height = screen_height
         self.velocity = pygame.math.Vector2(0, 0)
 
-        self.image = hook_sprite
+        self.image = hook_sprite  # see sprite_sheet.json for sizing
         self.pos: pygame.math.Vector2 = pygame.math.Vector2(*start_pos)
         self.rect: pygame.Rect = self.image.get_rect(midtop=(self.pos.x, self.pos.y))
 

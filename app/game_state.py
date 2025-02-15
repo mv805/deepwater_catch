@@ -1,11 +1,10 @@
 import pygame
 from typing import Tuple
-from sprites import load_sprites
-from game_colors import Colors
-
-from player_controller import PlayerController
-from fishing_hook import FishingHook
-from fish_generator import FishGenerator
+from app.sprites import load_sprites
+from app.game_colors import Colors
+from app.player_controller import PlayerController
+from app.fishing_hook import FishingHook
+from app.fish_generator import FishGenerator
 
 
 class GameState:
@@ -66,7 +65,16 @@ class GameState:
             self.fish_sprites_group.add(fish_to_spawn)
             self.all_sprites_group.add(fish_to_spawn)
 
-        self.fish_sprites_group.update(dt, self.hook.pos, self.hook)
+        self.fish_sprites_group.update(dt, self.hook)
+        self.kill_offscreen_fish()
+
+    def kill_offscreen_fish(self):
+        screen_width = self.screen.get_width()
+        for fish in self.fish_sprites_group.sprites():
+            if fish.velocity.x < 0 and fish.rect.topright[0] < 0:
+                fish.kill()
+            elif fish.velocity.x > 0 and fish.rect.topleft[0] >= screen_width:
+                fish.kill()
 
     def fish_caught(self):
         self.fish_caught_count += 1

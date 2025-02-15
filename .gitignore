@@ -4,3 +4,6 @@ venv
 assets/sprite_sheet_test.json
 assets/sprite_sheet_test.png
 assets/test.png
+tests/_pending/test_fish_generator.py
+tests/_pending/test_fishing_hook.py
+tests/_pending/test_player_controller.py
