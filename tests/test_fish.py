@@ -15,7 +15,6 @@ HOOK_START_POS = (260, 200)
 class TestFishMovementAndCollision(unittest.TestCase):
 
     def setUp(self):
-        self.screen = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.fish_sprite = pygame.Surface((TestParams.FISH_SPRITE.width, TestParams.FISH_SPRITE.height))  # Dummy sprite
         self.hook = Mock(spec=FishingHook)
         self.hook.pos = pygame.math.Vector2(*HOOK_START_POS)
@@ -25,67 +24,40 @@ class TestFishMovementAndCollision(unittest.TestCase):
 
     def test_left_movement(self):
         # establish a fish moving left
-        fish = Fish((100, 100), self.fish_sprite, "left", DEFAULT_FISH_SPEED, self.screen)
+        fish = Fish((100, 100), self.fish_sprite, "left", DEFAULT_FISH_SPEED)
         # save original position for comparisons
         initial_x = fish.pos.x
         # utilize the fish update method as would be done from the gamestate
-        fish.update(1.0, self.hook, self.screen.get_width())
+        fish.update(1.0, self.hook)
         # the position should be moved left after one tick or update iteration
         self.assertLess(fish.pos.x, initial_x)
 
     def test_right_movement(self):
         # establish a fish moving left
-        fish = Fish((100, 100), self.fish_sprite, "right", DEFAULT_FISH_SPEED, self.screen)
+        fish = Fish((100, 100), self.fish_sprite, "right", DEFAULT_FISH_SPEED)
         # save original position for comparisons
         initial_x = fish.pos.x
         # utilize the fish update method as would be done from the gamestate
-        fish.update(1.0, self.hook, self.screen.get_width())
+        fish.update(1.0, self.hook)
         # the position should be moved right after one tick or update iteration
         self.assertGreater(fish.pos.x, initial_x)
 
-    def test_boundary_right(self):
-        fish = Fish(
-            (self.screen.get_width() - TestParams.FISH_SPRITE.width, 100),
-            self.fish_sprite,
-            "right",
-            DEFAULT_FISH_SPEED,
-            self.screen,
-        )  # start near boundary of right side
-        fish_group = pygame.sprite.Group()
-        fish_group.add(fish)
-        self.assertTrue(fish.alive())
-        # two ticks of movement
-        fish.update(1.0, self.hook, self.screen.get_width())
-        fish.update(1.0, self.hook, self.screen.get_width())
-        self.assertFalse(fish.alive())
-
-    def test_boundary_left(self):
-        # Create a fish moving left; start close enough to left edge so it goes off
-        fish = Fish((TestParams.FISH_SPRITE.width, 100), self.fish_sprite, "left", DEFAULT_FISH_SPEED, self.screen)
-        fish_group = pygame.sprite.Group()
-        fish_group.add(fish)
-        self.assertTrue(fish.alive())
-        # two ticks of movement
-        fish.update(1.0, self.hook, self.screen.get_width())
-        fish.update(1.0, self.hook, self.screen.get_width())
-        self.assertFalse(fish.alive())
-
     def test_hook_collision_from_left(self):
         # Create a fish instance with an initial position away from the hook
-        fish = Fish((200, 200), self.fish_sprite, "right", DEFAULT_FISH_SPEED, self.screen)
+        fish = Fish((200, 200), self.fish_sprite, "right", DEFAULT_FISH_SPEED)
 
         # no collision because the fish's rect does not overlap the hook's
         self.assertNotEqual(fish.pos, self.hook.pos)
 
         # Update the fish so that collide_rect now checks real overlap
-        fish.update(1.0, self.hook, self.screen.get_width())
+        fish.update(1.0, self.hook)
 
         # After a collision, the fish should have zero velocity and be on the hook.
         self.assertEqual(fish.velocity.x, 0)
         self.assertEqual(fish.pos, self.hook.rect.center)
 
         # make sure it doesnt move after a tick
-        fish.update(1.0, self.hook, self.screen.get_width())
+        fish.update(1.0, self.hook)
         self.assertEqual(fish.velocity.x, 0)
         self.assertEqual(fish.pos, self.hook.rect.center)
 
@@ -93,7 +65,7 @@ class TestFishMovementAndCollision(unittest.TestCase):
         self.hook.pos = pygame.math.Vector2(*HOOK_START_POS)
         self.hook.rect.center = (self.hook.pos.x, self.hook.pos.y)
 
-        fish.update(1.0, self.hook, self.screen.get_width())
+        fish.update(1.0, self.hook)
         self.assertEqual(fish.velocity.x, 0)
         self.assertEqual(fish.pos, self.hook.rect.center)
 
@@ -105,7 +77,7 @@ class TestFishInitialization(unittest.TestCase):
         # Using a dummy sprite for the test.
         dummy_sprite = pygame.Surface((TestParams.FISH_SPRITE.width, TestParams.FISH_SPRITE.height))
         with self.assertRaises(ValueError) as context:
-            Fish((100, 100), dummy_sprite, "right", 0, self.screen)
+            Fish((100, 100), dummy_sprite, "right", 0)
         self.assertEqual(str(context.exception), "movement_speed must be > 0")
 
 

@@ -73,7 +73,7 @@ class FishGenerator:
             # calculate movement speed
             speed = random.randint(self.min_fish_speed, self.max_fish_speed)
 
-            fish = Fish((x_spawn_pos, y_spawn_pos), self.fish_sprite, self.fish_facing, speed, self.screen)
+            fish = Fish((x_spawn_pos, y_spawn_pos), self.fish_sprite, self.fish_facing, speed)
 
             # toggle to other side for next spawn
             self._toggle_fish_facing()

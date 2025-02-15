@@ -11,29 +11,23 @@ if TYPE_CHECKING:
 class CaughtState(State):
 
     def enter(self, fish: "Fish", *args, **kwargs):
-        fish.stop_swimming()
+        fish._stop_swimming()
 
     def update(self, fish: "Fish", hook: "FishingHook", *args, **kwargs):
         # Follow hook position
-        fish.move_fish_to_hook(hook)
+        fish._move_fish_to_hook(hook)
 
 
 class SwimmingState(State):
 
-    def update(self, fish: "Fish", dt: float, hook: "FishingHook", screen_width: int, *args, **kwargs):
+    def update(self, fish: "Fish", dt: float, hook: "FishingHook", *args, **kwargs):
         # Update position based on velocity
         fish.pos.x += fish.velocity.x * dt
-        fish.rect.center = fish.pos
-
-        # Check screen boundaries
-        if fish.velocity.x < 0 and fish.rect.topright[0] < 0:
-            fish.kill()
-        elif fish.velocity.x > 0 and fish.rect.topleft[0] >= screen_width:
-            fish.kill()
+        fish._rect.center = fish.pos
 
         # Check for collision with hook
         if pygame.sprite.collide_rect(fish, hook):
-            fish.set_fish_caught(hook)
+            fish._set_fish_caught(hook)
 
 
 class Fish(pygame.sprite.Sprite):
@@ -44,18 +38,16 @@ class Fish(pygame.sprite.Sprite):
         fish_sprite: pygame.Surface,
         facing_direction: Literal["left", "right"],
         movement_speed: int,
-        screen: pygame.Surface,
     ):
         if movement_speed <= 0:
             raise ValueError("movement_speed must be > 0")
         super().__init__()
-        self._screen_width = screen.get_width()
         self._movement_speed = movement_speed
         self._pos: pygame.math.Vector2 = pygame.math.Vector2(*start_pos)
         self._velocity = pygame.math.Vector2(self._movement_speed, 0)  # going right by default
-        self.image: pygame.Surface = fish_sprite
+        self._image: pygame.Surface = fish_sprite
         self._face_fish_if_left(facing_direction)
-        self.rect: pygame.Rect = self.image.get_rect(center=(self._pos.x, self._pos.y))
+        self._rect: pygame.Rect = self._image.get_rect(center=(self._pos.x, self._pos.y))
 
         self._state_machine = StateMachine(self)
         self._state_machine.transition_to(SwimmingState())
@@ -68,24 +60,32 @@ class Fish(pygame.sprite.Sprite):
     def velocity(self) -> pygame.math.Vector2:
         return self._velocity
 
+    @property
+    def image(self) -> pygame.Surface:
+        return self._image
+
+    @property
+    def rect(self) -> pygame.Rect:
+        return self._rect
+
     def _face_fish_if_left(self, direction: Literal["left", "right"]):
         if direction == "left":
             self._velocity = pygame.math.Vector2(-self._movement_speed, 0)
-            self.image = pygame.transform.flip(self.image, True, False)
+            self._image = pygame.transform.flip(self._image, True, False)
 
-    def move_fish_to_hook(self, hook: "FishingHook"):
+    def _move_fish_to_hook(self, hook: "FishingHook"):
         """moves the fish to the given hook"""
         self._pos = pygame.math.Vector2(hook.rect.center)
-        self.rect.center = self._pos
+        self._rect.center = self._pos
 
-    def stop_swimming(self) -> None:
+    def _stop_swimming(self) -> None:
         """Stop movement of the fish"""
         self._velocity = pygame.math.Vector2(0, 0)
 
-    def set_fish_caught(self, hook) -> None:
+    def _set_fish_caught(self, hook) -> None:
         """Change to caught state"""
         self._state_machine.transition_to(CaughtState(), self)
-        self.move_fish_to_hook(hook)
+        self._move_fish_to_hook(hook)
 
-    def update(self, dt: float, hook: "FishingHook", screen_width: int):
-        self._state_machine.update(dt=dt, hook=hook, screen_width=screen_width)
+    def update(self, dt: float, hook: "FishingHook"):
+        self._state_machine.update(dt=dt, hook=hook)
