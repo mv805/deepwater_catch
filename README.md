@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ### 3. Start the Game
 ```sh
-python main.py
+python -m app.main
 ```
 
 ## Roadmap and Changelog
@@ -38,7 +38,7 @@ Here are some goals to polish up the project
 
 - [x] Version 0.1.0: Initial release with basic gameplay mechanics
 - [x] Version 0.2.0: Improved graphics
-- [ ] Version 0.2.1: Build initial Test Suite
+- [x] Version 0.2.1: Build initial Test Suite and Optimizations
 - [ ] Version 0.2.2: Clean up and Refactor Code for clarity
 - [ ] Version 0.3.0: Add animations
 - [ ] Version 0.5.0: Add splash screen and end of game window
